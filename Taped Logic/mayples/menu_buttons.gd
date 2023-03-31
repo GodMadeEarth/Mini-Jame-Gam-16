@@ -12,5 +12,5 @@ func _process(delta):
 
 
 func _on_pressed():
-	get_tree().change_scene_to_file("res://1280x_720.tscn")
+	get_tree().change_scene_to_file("res://mayples/1280x_720.tscn")
 	pass # Replace with function body.

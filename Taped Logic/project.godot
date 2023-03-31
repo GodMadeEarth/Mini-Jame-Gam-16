@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Taped Logic"
-run/main_scene="res://1280x_720.tscn"
+run/main_scene="res://mayples/1280x_720.tscn"
 config/features=PackedStringArray("4.0", "GL Compatibility")
 config/icon="res://icon.svg"
 
