@@ -1,0 +1,100 @@
+[gd_scene load_steps=7 format=3 uid="uid://b3l8ln2t23xae"]
+
+[ext_resource type="Texture2D" uid="uid://3t70x0ld13pk" path="res://mayples/images/temp/tl-logo500x500.png" id="1_r1p2u"]
+[ext_resource type="PackedScene" uid="uid://bh57r03wmaqpu" path="res://mayples/menu_seq/RESOURCES/menu_controller.tscn" id="2_jq4p3"]
+[ext_resource type="AudioStream" uid="uid://qw80frtb511i" path="res://mayples/sounds/introsong.mp3" id="3_n1tql"]
+
+[sub_resource type="Animation" id="Animation_gboyf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(627, 204)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_wo58h"]
+resource_name = "logo fade in"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(627, -154), Vector2(627, 204)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c8tt6"]
+_data = {
+"RESET": SubResource("Animation_gboyf"),
+"logo fade in": SubResource("Animation_wo58h")
+}
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Node2D" type="Node2D" parent="."]
+visible = false
+
+[node name="background-matte-NOTOUCH" type="ColorRect" parent="Node2D"]
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0, 0, 0, 1)
+metadata/_edit_lock_ = true
+
+[node name="LOGO" type="Node2D" parent="."]
+
+[node name="Tl-logo500x500" type="Sprite2D" parent="LOGO"]
+position = Vector2(627, 204)
+scale = Vector2(0.536, 0.536)
+texture = ExtResource("1_r1p2u")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LOGO/Tl-logo500x500"]
+autoplay = "logo fade in"
+libraries = {
+"": SubResource("AnimationLibrary_c8tt6")
+}
+
+[node name="Control" parent="." instance=ExtResource("2_jq4p3")]
+offset_left = 529.0
+offset_top = 423.0
+offset_right = 529.0
+offset_bottom = 423.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_n1tql")
+autoplay = true

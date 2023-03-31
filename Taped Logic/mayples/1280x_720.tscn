@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://bnaoh3u6i0tk3"]
-
-[ext_resource type="Texture2D" uid="uid://dkfxbfccngmwk" path="res://mayples/images/temp/1280x720.png" id="1_cpojn"]
-
-[node name="1280x720" type="Sprite2D"]
-position = Vector2(640, 360)
-texture = ExtResource("1_cpojn")

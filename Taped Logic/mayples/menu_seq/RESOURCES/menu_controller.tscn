@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=3 uid="uid://bh57r03wmaqpu"]
+
+[ext_resource type="Texture2D" uid="uid://coewnsljp3r1w" path="res://mayples/images/temp/up-no-press.png" id="1_mr3xt"]
+[ext_resource type="Texture2D" uid="uid://dpirabxu7usyq" path="res://mayples/images/temp/pressed.png" id="2_s2u4w"]
+[ext_resource type="Texture2D" uid="uid://b38f7g6n0abqk" path="res://mayples/images/temp/hover.png" id="3_ov17j"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 183.0
+color = Color(0.0980392, 0.298039, 0.415686, 1)
+
+[node name="TextureButton" type="TextureButton" parent="."]
+y_sort_enabled = true
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 50.0
+tooltip_text = "PLAY"
+texture_normal = ExtResource("1_mr3xt")
+texture_pressed = ExtResource("2_s2u4w")
+texture_hover = ExtResource("3_ov17j")
+
+[node name="TextureButton2" type="TextureButton" parent="."]
+layout_mode = 0
+offset_top = 55.0
+offset_right = 200.0
+offset_bottom = 105.0
+texture_normal = ExtResource("1_mr3xt")
+texture_pressed = ExtResource("2_s2u4w")
+texture_hover = ExtResource("3_ov17j")
+
+[node name="TextureButton3" type="TextureButton" parent="."]
+layout_mode = 0
+offset_top = 110.0
+offset_right = 200.0
+offset_bottom = 160.0
+texture_normal = ExtResource("1_mr3xt")
+texture_pressed = ExtResource("2_s2u4w")
+texture_hover = ExtResource("3_ov17j")
