@@ -1,12 +1,8 @@
-<<<<<<< Updated upstream
-[gd_scene load_steps=12 format=3 uid="uid://bgyxc3i11rqqo"]
-=======
 <<<<<<< HEAD
 [gd_scene load_steps=13 format=3 uid="uid://bgyxc3i11rqqo"]
 =======
 [gd_scene load_steps=12 format=3 uid="uid://bgyxc3i11rqqo"]
 >>>>>>> d2453b9fd69721ddfce68fccfcb814d10e98d0cb
->>>>>>> Stashed changes
 
 [ext_resource type="Texture2D" uid="uid://gokr68gcribc" path="res://timmysoup/Demo Circuitboard.png" id="1_ltrqd"]
 [ext_resource type="Texture2D" uid="uid://byhluh3ga1sq0" path="res://retro/CircutBoardV2.png" id="1_meh2e"]
@@ -14,8 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://c3sgr48q13k6q" path="res://timmysoup/components-Sheet.png" id="3_rl48i"]
 [ext_resource type="Script" path="res://timmysoup/CircuitBoard2D.gd" id="4_cel5x"]
 
-<<<<<<< Updated upstream
-=======
 <<<<<<< HEAD
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_urm4w"]
 resource_name = "Circuit Wiring"
@@ -113,7 +107,6 @@ texture = ExtResource("1_meh2e")
 7:7/0/terrains_peering_bit/bottom_side = 0
 7:7/0/terrains_peering_bit/top_left_corner = 0
 =======
->>>>>>> Stashed changes
 [sub_resource type="TileMapPattern" id="TileMapPattern_84c1i"]
 tile_data = PackedInt32Array(0, 262146, 0, 65536, 131074, 2, 131072, 65538, 4, 65537, 262146, 3, 131073, 2, 3, 131074, 65538, 1)
 
@@ -122,10 +115,7 @@ tile_data = PackedInt32Array(0, 196610, 0, 65536, 65538, 4, 1, 262146, 3, 65537,
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_niqkw"]
 tile_data = PackedInt32Array(131072, 2, 4, 196608, 65538, 3, 262144, 196610, 1, 1, 262146, 0, 65537, 262146, 1, 131073, 196610, 3, 196609, 131074, 4)
-<<<<<<< Updated upstream
-=======
 >>>>>>> d2453b9fd69721ddfce68fccfcb814d10e98d0cb
->>>>>>> Stashed changes
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e2np4"]
 texture = ExtResource("1_ltrqd")
@@ -311,11 +301,6 @@ custom_data_layer_0/type = 2
 sources/1 = SubResource("TileSetAtlasSource_e2np4")
 sources/2 = SubResource("TileSetAtlasSource_tjr5r")
 sources/3 = SubResource("TileSetAtlasSource_3sw1b")
-<<<<<<< Updated upstream
-pattern_0 = SubResource("TileMapPattern_84c1i")
-pattern_1 = SubResource("TileMapPattern_rn8b1")
-pattern_2 = SubResource("TileMapPattern_niqkw")
-=======
 <<<<<<< HEAD
 sources/0 = SubResource("TileSetAtlasSource_urm4w")
 sources/4 = SubResource("TileSetAtlasSource_k56j1")
@@ -325,7 +310,6 @@ pattern_0 = SubResource("TileMapPattern_84c1i")
 pattern_1 = SubResource("TileMapPattern_rn8b1")
 pattern_2 = SubResource("TileMapPattern_niqkw")
 >>>>>>> d2453b9fd69721ddfce68fccfcb814d10e98d0cb
->>>>>>> Stashed changes
 
 [node name="CircuitBoard2D" type="TileMap"]
 texture_filter = 1
