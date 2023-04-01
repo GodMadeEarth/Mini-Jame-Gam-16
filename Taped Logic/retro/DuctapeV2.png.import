@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dl3musfqeogv3"
-path="res://.godot/imported/components.png-b7ad1e6de43f2a9ddadcd6180aa2416b.ctex"
+uid="uid://boic5ysfwqc7t"
+path="res://.godot/imported/DuctapeV2.png-1721f805258e1d07385561535ab59ec3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://timmysoup/components.png"
-dest_files=["res://.godot/imported/components.png-b7ad1e6de43f2a9ddadcd6180aa2416b.ctex"]
+source_file="res://retro/DuctapeV2.png"
+dest_files=["res://.godot/imported/DuctapeV2.png-1721f805258e1d07385561535ab59ec3.ctex"]
 
 [params]
 
