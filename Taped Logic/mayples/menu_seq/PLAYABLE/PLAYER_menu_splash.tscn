@@ -1,6 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://b3l8ln2t23xae"]
+[gd_scene load_steps=9 format=3 uid="uid://b3l8ln2t23xae"]
 
+[ext_resource type="Texture2D" uid="uid://chhb5jh00pl8i" path="res://mayples/images/temp/image-circuit.png" id="1_iqyph"]
 [ext_resource type="Texture2D" uid="uid://3t70x0ld13pk" path="res://mayples/images/temp/tl-logo500x500.png" id="1_r1p2u"]
+[ext_resource type="Texture2D" uid="uid://dwgnrppfrdqli" path="res://mayples/images/temp/grad.png" id="2_gjinm"]
 [ext_resource type="PackedScene" uid="uid://bh57r03wmaqpu" path="res://mayples/menu_seq/RESOURCES/menu_controller.tscn" id="2_jq4p3"]
 [ext_resource type="AudioStream" uid="uid://qw80frtb511i" path="res://mayples/sounds/introsong.mp3" id="3_n1tql"]
 
@@ -67,6 +69,17 @@ _data = {
 
 [node name="Node2D" type="Node2D"]
 
+[node name="Image-circuit" type="Sprite2D" parent="."]
+modulate = Color(0.439216, 0.439216, 0.439216, 1)
+position = Vector2(639, 394)
+scale = Vector2(2.54492, 2.12695)
+texture = ExtResource("1_iqyph")
+
+[node name="Grad" type="Sprite2D" parent="."]
+position = Vector2(640, 540)
+scale = Vector2(5.18, 2.248)
+texture = ExtResource("2_gjinm")
+
 [node name="Node2D" type="Node2D" parent="."]
 visible = false
 
@@ -90,11 +103,19 @@ libraries = {
 }
 
 [node name="Control" parent="." instance=ExtResource("2_jq4p3")]
-offset_left = 529.0
-offset_top = 423.0
-offset_right = 529.0
-offset_bottom = 423.0
+offset_left = 620.0
+offset_top = 390.0
+offset_right = 620.0
+offset_bottom = 390.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_n1tql")
 autoplay = true
+
+[node name="Label" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0.27451)
+offset_left = 5.0
+offset_top = 695.0
+offset_right = 201.0
+offset_bottom = 721.0
+text = "version number: <TODO>"

@@ -211,9 +211,11 @@ script = ExtResource("2_u8t4b")
 
 [node name="boop1" type="AudioStreamPlayer" parent="logo_bundle"]
 stream = ExtResource("2_188jj")
+stream_paused = true
 
 [node name="boop2" type="AudioStreamPlayer" parent="logo_bundle"]
 stream = ExtResource("3_opyad")
+stream_paused = true
 
 [node name="Grad" type="Sprite2D" parent="."]
 position = Vector2(640.5, 356.5)
