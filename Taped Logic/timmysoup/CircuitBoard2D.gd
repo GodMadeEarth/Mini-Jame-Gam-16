@@ -17,7 +17,7 @@ func _ready():
 	print(tiles_connected())
 
 func _process(delta):
-	pass
+	set_cell(3,Vector2i(0,0),-1,Vector2i(0,0))
 
 func get_components_of_type(atlasCord = Vector2i(0,1)):
 	var components = get_used_cells(0)
@@ -27,9 +27,10 @@ func get_components_of_type(atlasCord = Vector2i(0,1)):
 			selectedComponents.append(component)
 	return selectedComponents
 
-func emit_power(cellPosition = Vector2i(0,1)):
-	get_cell_tile_data(1,cellPosition).set_custom_data("powerPathing",1)
-	
+#func emit_power(cellPosition = Vector2i(0,1)):
+#
+#	get_cell_tile_data(1,cellPosition).set_custom_data("powerPathing",1)
+
 func tiles_connected(cell1Position = Vector2i(1,1),cell2Position = Vector2i(0,1)):
 	var direction = Vector2i(cell1Position - cell2Position)
 	
@@ -99,3 +100,4 @@ func get_wire_group(rootCellPosition = Vector2i(0,1)):
 		
 		processedWires.append(wiresToProcess[0]);wiresToProcess.erase(0)
 	return processedWires
+
