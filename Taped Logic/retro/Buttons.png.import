@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxafdqes5025v"
-path="res://.godot/imported/jamegame-logo-splash.png-875643671591458bbb3d48e69f7e78d4.ctex"
+uid="uid://crmoc40xb1wtr"
+path="res://.godot/imported/Buttons.png-8c6e6e553b9c4ba562103d23566a0254.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://mayples/images/temp/jamegame-logo-splash.png"
-dest_files=["res://.godot/imported/jamegame-logo-splash.png-875643671591458bbb3d48e69f7e78d4.ctex"]
+source_file="res://retro/Buttons.png"
+dest_files=["res://.godot/imported/Buttons.png-8c6e6e553b9c4ba562103d23566a0254.ctex"]
 
 [params]
 
