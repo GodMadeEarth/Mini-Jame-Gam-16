@@ -10,7 +10,7 @@ func _process(delta):
 	pass
 
 func get_components_of_type(atlasCord = Vector2i(0,1)):
-	var components = get_used_cells(0)
+	var components = get_used_cells(2)
 	var selectedComponents = []
 	for component in components:
 		if get_cell_atlas_coords(2,component) == atlasCord:
@@ -104,6 +104,7 @@ func _on_button_pressed():
 	var onButtonLoc = Vector2i(1,0) #GREEN POWER
 	var onEndLoc = Vector2i(1,1) #GREEN node
 	##ARRAY MAKER
+	var splitArrayIndex
 	var powerButtonOffArray := []
 	var powerButtonOnArray := []
 	var circuitWireArray :=[]
@@ -112,12 +113,18 @@ func _on_button_pressed():
 	#######################################
 	
 	##OFF BUTTON + OFF END POINT INTO ARRAYS
-	powerButtonOffArray.append(get_components_of_type(offButtonLoc))
-	circuitTerminationOffArray.append(get_components_of_type(offEndLoc))
-		
-	##ON BUTTON + ON END POINT INTO ARRAYS
-	powerButtonOnArray.append(get_components_of_type(onButtonLoc))
-	circuitTerminationOnArray.append(get_components_of_type(onEndLoc))
+	powerButtonOffArray.append_array(get_components_of_type(offButtonLoc))
+	circuitTerminationOffArray.append_array(get_components_of_type(offEndLoc))
+	
+	#ON BUTTON + ON END POINT INTO ARRAYS
+	powerButtonOnArray.append_array(get_components_of_type(onButtonLoc))
+	circuitTerminationOnArray.append_array(get_components_of_type(onEndLoc))
+	
+	## get length of array
+	splitArrayIndex = len(powerButtonOffArray)
+	##
+	for buttoncount in splitArrayIndex:
+		circuitWireArray.append(get_wire_group(powerButtonOffArray[buttoncount]))
 	
 	
 	
@@ -126,6 +133,9 @@ func _on_button_pressed():
 	print("\n")
 	print("###End Points in the OFF STATE location###")
 	print(circuitTerminationOffArray)
+	print("\n")
+	print("###WireArray Set###")
+	print(circuitWireArray)
 	
 	pass # Replace with function body.
 
