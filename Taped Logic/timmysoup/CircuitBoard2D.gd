@@ -1,6 +1,6 @@
 extends TileMap
 
-
+enum.
 
 func _ready():
 	set_cell(2,Vector2i(0,0),0,Vector2i(0,0))
@@ -30,7 +30,7 @@ func tiles_connected(cell1Position = Vector2i(1,1),cell2Position = Vector2i(0,1)
 		elif get_cell_tile_data(1,cell1Position).get_terrain_peering_bit(8) != -1 and get_cell_tile_data(1,cell2Position).get_terrain_peering_bit(0) != -1:
 			return true
 		elif get_cell_tile_data(1,cell1Position).get_terrain_peering_bit(11) != -1 and get_cell_tile_data(1,cell2Position).get_terrain_peering_bit(15) != -1:
-			return true
+			return true 
 
 	elif direction == Vector2i(-1,0):#Right
 		if get_cell_tile_data(1,cell1Position).get_terrain_peering_bit(3) != -1 and get_cell_tile_data(1,cell2Position).get_terrain_peering_bit(7) != -1:
@@ -148,6 +148,9 @@ func _on_button_pressed():
 	print("###WireArray Set###")
 	print(circuitWireArray)
 	
-	pass # Replace with function body.
+	
 
-
+func update_cells_atlas(cellPositions = [Vector2i(0,0)],atlasCord = Vector2i(0,0)):
+	for cellPosition in cellPositions:
+		if get_cell_atlas_coords(2,cellPosition) != atlasCord:
+			set_cell(2,cellPosition,0,atlasCord)

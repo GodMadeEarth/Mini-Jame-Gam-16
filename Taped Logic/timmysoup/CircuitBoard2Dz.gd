@@ -1,11 +1,34 @@
 extends TileMap
 
+# Load Component Atlas
+var outputComponentAtlas = [Vector2i(0,1),Vector2i(1,1),Vector2i(4,6),Vector2i(4,7),Vector2i(0,8),Vector2i(1,8),Vector2i(2,8),Vector2i(2,9),Vector2i(4,8),Vector2i(5,8)]
+var inputComponentAtlas = [Vector2i(0,0),Vector2i(1,0)]
+
+var notGateAtlas = [Vector2i(2,0),Vector2i(3,0),Vector2i(4,0),Vector2i(4,1)]
+var andGateAtlas = [Vector2i(0,2),Vector2i(2,2),Vector2i(4,2),Vector2i(0,4)]
+var orGateAtlas = [Vector2i(2,4),Vector2i(4,4),Vector2i(0,6),Vector2i(1,6)]
+var logicComponentAtlas = notGateAtlas + andGateAtlas + orGateAtlas
+
+var outputComponents = []
+var inputComponents = []
+var logicComponents = []
+	
+
 
 
 func _ready():
-	pass
-	#print(get_wire_group(Vector2i(0,0)))
-
+	# Load Components
+	for cell in outputComponentAtlas:
+		outputComponents.append_array(get_components_of_type(cell))
+		
+	for cell in inputComponentAtlas:
+		inputComponents.append_array(get_components_of_type(cell))
+	
+	for cell in logicComponentAtlas:
+		logicComponents.append_array(get_components_of_type(cell))
+	
+	_on_button_pressed()
+	
 func _process(delta):
 	pass
 
@@ -16,10 +39,6 @@ func get_components_of_type(atlasCord = Vector2i(0,1)):
 		if get_cell_atlas_coords(2,component) == atlasCord:
 			selectedComponents.append(component)
 	return selectedComponents
-
-#func emit_power(cellPosition = Vector2i(0,1)):
-#
-#	get_cell_tile_data(1,cellPosition).set_custom_data("powerPathing",1)
 
 func tiles_connected(cell1Position = Vector2i(1,1),cell2Position = Vector2i(0,1)):
 	var direction = Vector2i(cell1Position - cell2Position)
@@ -93,46 +112,37 @@ func get_wire_group(rootCellPosition = Vector2i(0,1)): #creates an array of all 
 		processedWires.append(wiresToProcess[0]);wiresToProcess.erase(wiresToProcess[0])
 	return processedWires
 
-
+func total_peering_bits( cellPosition = Vector2i(0,1),layer = 1):
+	var peering_bits = 0
+	for i in range(1,15):
+		if get_cell_tile_data(layer,cellPosition).get_terrain_peering_bit(i) != -1:
+			peering_bits += 1
+	return peering_bits
 
 func _on_button_pressed():
-	####SETUP###################
-	## OFF
-	var offButtonLoc = Vector2i(0,0) #RED POWER
-	var offEndLoc = Vector2i(0,1) #RED node
-	## ON
-	var onButtonLoc = Vector2i(1,0) #GREEN POWER
-	var onEndLoc = Vector2i(1,1) #GREEN node
-	##ARRAY MAKER
-	var powerButtonOffArray := []
-	var powerButtonOnArray := []
-	var circuitWireArray :=[]
-	var circuitTerminationOffArray := []
-	var circuitTerminationOnArray :=[]
-	#######################################
 	
-	##OFF BUTTON + OFF END POINT INTO ARRAYS
-	powerButtonOffArray.append_array(get_components_of_type(offButtonLoc))
-	circuitTerminationOffArray.append_array(get_components_of_type(offEndLoc))
-		
-	##ON BUTTON + ON END POINT INTO ARRAYS
-	powerButtonOnArray.append_array(get_components_of_type(onButtonLoc))
-	circuitTerminationOnArray.append_array(get_components_of_type(onEndLoc))
-	
-	#print(get_wire_group(powerButtonOffArray[0]))
-	#circuitWireArray.append(temp)
+	for outputComponent in outputComponents:
+		update_output_component(outputComponent)
+					
 
+func update_cell_atlas(cellPosition = Vector2i(0,0),atlasCord = Vector2i(0,0)):
+	if get_cell_atlas_coords(2,cellPosition) != atlasCord:
+		set_cell(2,cellPosition,0,atlasCord)
 
-	
-	print("###Power Buttons in the OFF STATE location###")
-	print(powerButtonOffArray)
-	print("\n")
-	print("###End Points in the OFF STATE location###")
-	print(circuitTerminationOffArray)
-	
-	pass # Replace with function body.
+func get_wire_endpoints(wireArray=[]):
+	var endpointArray = []
+	for wire in wireArray:
+		if total_peering_bits(wire) == 1:
+			endpointArray.append(wire)
+	return endpointArray
 
-func update_cells_atlas(cellPositions = [Vector2i(0,0)],atlasCord = Vector2i(0,0)):
-	for cellPosition in cellPositions:
-		if get_cell_atlas_coords(2,cellPosition) != atlasCord:
-			set_cell(2,cellPosition,0,atlasCord)
+func update_output_component(outputComponent = Vector2i(0,0)):
+	var wirePoints = get_wire_endpoints(get_wire_group(outputComponent))
+	wirePoints.erase(outputComponent)
+	for point in wirePoints:
+		if point in inputComponents:
+			if get_cell_atlas_coords(2,point) == inputComponentAtlas[1]:
+				update_cell_atlas(outputComponent,outputComponentAtlas[1])
+				return
+			elif get_cell_atlas_coords(2,point) == inputComponentAtlas[0]:
+				update_cell_atlas(outputComponent,outputComponentAtlas[0])
