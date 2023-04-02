@@ -3,7 +3,8 @@ extends TileMap
 
 
 func _ready():
-	print(get_wire_group(Vector2i(1,1)))
+	pass
+	#print(get_wire_group(Vector2i(0,0)))
 
 func _process(delta):
 	pass
@@ -58,7 +59,7 @@ func tiles_connected(cell1Position = Vector2i(1,1),cell2Position = Vector2i(0,1)
 	else:
 		return false
 
-func get_wire_group(rootCellPosition = Vector2i(0,1)):
+func get_wire_group(rootCellPosition = Vector2i(0,1)): #creates an array of all the positions for start?
 	var processedWires = []
 	var wiresToProcess = [rootCellPosition]
 	var quantumWire = Vector2i()
@@ -91,4 +92,40 @@ func get_wire_group(rootCellPosition = Vector2i(0,1)):
 				
 		processedWires.append(wiresToProcess[0]);wiresToProcess.erase(wiresToProcess[0])
 	return processedWires
+
+
+
+func _on_button_pressed():
+	####SETUP###################
+	## OFF
+	var offButtonLoc = Vector2i(0,0) #RED POWER
+	var offEndLoc = Vector2i(0,1) #RED node
+	## ON
+	var onButtonLoc = Vector2i(1,0) #GREEN POWER
+	var onEndLoc = Vector2i(1,1) #GREEN node
+	##ARRAY MAKER
+	var powerButtonOffArray := []
+	var powerButtonOnArray := []
+	var circuitWireArray :=[]
+	var circuitTerminationOffArray := []
+	var circuitTerminationOnArray :=[]
+	#######################################
+	
+	##OFF BUTTON + OFF END POINT INTO ARRAYS
+	powerButtonOffArray.append(get_components_of_type(offButtonLoc))
+	circuitTerminationOffArray.append(get_components_of_type(offEndLoc))
+		
+	##ON BUTTON + ON END POINT INTO ARRAYS
+	powerButtonOnArray.append(get_components_of_type(onButtonLoc))
+	circuitTerminationOnArray.append(get_components_of_type(onEndLoc))
+	
+	
+	
+	print("###Power Buttons in the OFF STATE location###")
+	print(powerButtonOffArray)
+	print("\n")
+	print("###End Points in the OFF STATE location###")
+	print(circuitTerminationOffArray)
+	
+	pass # Replace with function body.
 
