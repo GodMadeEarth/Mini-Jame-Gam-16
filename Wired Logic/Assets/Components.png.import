@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bv84mkj44svkb"
-path="res://.godot/imported/NotGate.png-3dbbf1e61186eb85435c739cc06e137f.ctex"
+uid="uid://ewriwool2jn5"
+path="res://.godot/imported/Components.png-12b5cc45a5c07ac27f641c440b0bb4ad.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/NotGate.png"
-dest_files=["res://.godot/imported/NotGate.png-3dbbf1e61186eb85435c739cc06e137f.ctex"]
+source_file="res://Assets/Components.png"
+dest_files=["res://.godot/imported/Components.png-12b5cc45a5c07ac27f641c440b0bb4ad.ctex"]
 
 [params]
 
