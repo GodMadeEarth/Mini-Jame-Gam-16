@@ -5,6 +5,9 @@ var wireLayers : int = 2
 var wireLayer1 = 2
 var wireLayer2 = 3
 
+var wireIndex = {}
+
+
 #[off,on]
 #[right,down,left,top] 
 
@@ -25,6 +28,7 @@ var orGateAtlas = [Vector2i(12,0),Vector2i(14,0),Vector2i(12,2),Vector2i(14,2)]
 
 func _ready():
 	componentUpdate()
+	wireIndex[1] = 2
 
 func _input(event):
 	if event is InputEventMouseButton and event.is_pressed():
@@ -41,9 +45,7 @@ func _input(event):
 
 func wire_powered(wireList=[], wireLayer = int()):
 	
-	var wirePoints = cells_with_peering_bit_total(wireList,wireLayer,1,1)
-	
-	for point in wirePoints:
+	for point in wireList:
 		
 		# Powered Button Check
 		if point in powerButtonCords:
@@ -126,8 +128,10 @@ func wire_powered(wireList=[], wireLayer = int()):
 
 func componentUpdate():
 	
+	
 	for cord in indicatorLightCords:
-
+		
+		
 		if wire_powered(terrain_group(cord,wireLayer1,1),wireLayer1) or wire_powered(terrain_group(cord,wireLayer2,1),wireLayer2):
 			update_cell_atlas(cord,1,2,indicatorLightAtlas[1])
 		else:

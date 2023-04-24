@@ -1,5 +1,7 @@
 extends TileMap
 
+var terrainGroupCalls = {}
+
 func int_to_cell_neighboor(integer = int()):
 	if integer == 0:
 		return TileSet.CELL_NEIGHBOR_RIGHT_SIDE
@@ -80,6 +82,11 @@ func cell_terrain_touching(cell1Position = Vector2i(), cell2Position = Vector2i(
 		return false
 
 func terrain_group(rootCellPosition = Vector2i(), layer = int(), terrainId = int()):
+	var testValue = [rootCellPosition,layer,terrainId]
+	
+	if testValue in terrainGroupCalls.keys():
+		return terrainGroupCalls[testValue]
+	
 	var processedCells = []
 	var cellsToProcess = []
 	var testingCell = Vector2i()
@@ -115,6 +122,10 @@ func terrain_group(rootCellPosition = Vector2i(), layer = int(), terrainId = int
 		if cellsToProcess[0] not in processedCells:
 			processedCells.append(cellsToProcess[0])
 		cellsToProcess.erase(cellsToProcess[0])
+		
+	if testValue not in terrainGroupCalls.keys():
+		terrainGroupCalls[testValue] = processedCells
+		
 	return processedCells
 
 func cells_with_peering_bit_total(cellList = [Vector2i()], layer = int(), terrainId = int(), endpoints = int()):
