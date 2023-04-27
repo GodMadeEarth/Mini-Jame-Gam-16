@@ -13,13 +13,16 @@ var wireIndex = {}
 
 var indicatorLightAtlas = [Vector2i(16,1),Vector2i(17,1)]
 var powerButtonAtlas = [Vector2i(16,0),Vector2i(17,0)]
-var boltAtlas = [Vector2i(18,0)]
+var bigIndicatorLightAtlas = [Vector2i(18,2),Vector2i(20,2)]
+var bigPowerButtonAtlas = [Vector2i(18,0),Vector2i(20,0)]
+
+var boltAtlas = [Vector2i(16,2)]
 var notGateAtlas = [Vector2i(4,1),Vector2i(6,0),Vector2i(4,2),Vector2i(7,2)]
 var andGateAtlas = [Vector2i(8,0),Vector2i(10,0),Vector2i(8,2),Vector2i(10,2)]
 var orGateAtlas = [Vector2i(12,0),Vector2i(14,0),Vector2i(12,2),Vector2i(14,2)]
 
-@onready var indicatorLightCords = cells_in_atlas(indicatorLightAtlas,1)
-@onready var powerButtonCords = cells_in_atlas(powerButtonAtlas,1)
+@onready var indicatorLightCords = cells_in_atlas(indicatorLightAtlas,1)+cells_in_atlas(bigIndicatorLightAtlas,1)
+@onready var powerButtonCords = cells_in_atlas(powerButtonAtlas,1)+cells_in_atlas(bigPowerButtonAtlas,1)
 @onready var boltCords = cells_in_atlas(boltAtlas,1)
 @onready var notGateCords = cells_in_atlas(notGateAtlas,1)
 @onready var andGateCords = cells_in_atlas(andGateAtlas,1)
@@ -39,7 +42,46 @@ func _input(event):
 			elif get_cell_atlas_coords(1,cellPos) == powerButtonAtlas[1]:
 				update_cell_atlas(cellPos,1,2,powerButtonAtlas[0])
 			
+			if get_cell_atlas_coords(1,cellPos) == bigPowerButtonAtlas[0]:
+				update_cell_atlas(cellPos,1,2,bigPowerButtonAtlas[1])
+			elif get_cell_atlas_coords(1,cellPos) == bigPowerButtonAtlas[1]:
+				update_cell_atlas(cellPos,1,2,bigPowerButtonAtlas[0])
+			
 			componentUpdate()
+			
+		if cellPos + Vector2i(0,1) in powerButtonCords:
+			
+			if get_cell_atlas_coords(1,cellPos + Vector2i(0,1)) == bigPowerButtonAtlas[0]:
+				update_cell_atlas(cellPos + Vector2i(0,1),1,2,bigPowerButtonAtlas[1])
+			elif get_cell_atlas_coords(1,cellPos + Vector2i(0,1)) == bigPowerButtonAtlas[1]:
+				update_cell_atlas(cellPos + Vector2i(0,1),1,2,bigPowerButtonAtlas[0])
+			
+			componentUpdate()
+			
+		if cellPos + Vector2i(-1,0) in powerButtonCords:
+			
+			if get_cell_atlas_coords(1,cellPos + Vector2i(-1,0)) == bigPowerButtonAtlas[0]:
+				update_cell_atlas(cellPos + Vector2i(-1,0),1,2,bigPowerButtonAtlas[1])
+			elif get_cell_atlas_coords(1,cellPos + Vector2i(-1,0)) == bigPowerButtonAtlas[1]:
+				update_cell_atlas(cellPos + Vector2i(-1,0),1,2,bigPowerButtonAtlas[0])
+			
+			componentUpdate()
+			
+		if cellPos + Vector2i(-1,1) in powerButtonCords:
+			
+			if get_cell_atlas_coords(1,cellPos + Vector2i(-1,1)) == bigPowerButtonAtlas[0]:
+				update_cell_atlas(cellPos + Vector2i(-1,1),1,2,bigPowerButtonAtlas[1])
+			elif get_cell_atlas_coords(1,cellPos + Vector2i(-1,1)) == bigPowerButtonAtlas[1]:
+				update_cell_atlas(cellPos + Vector2i(-1,1),1,2,bigPowerButtonAtlas[0])
+			
+			componentUpdate()
+		
+		
+		
+		
+		
+		
+		
 
 	
 
@@ -49,7 +91,7 @@ func wire_powered(wireList=[], wireLayer = int()):
 		
 		# Powered Button Check
 		if point in powerButtonCords:
-			if get_cell_atlas_coords(1,point) == powerButtonAtlas[1]:
+			if get_cell_atlas_coords(1,point) in [powerButtonAtlas[1],bigPowerButtonAtlas[1]]:
 				return true
 
 		elif point in boltCords:
@@ -131,8 +173,13 @@ func componentUpdate():
 	
 	for cord in indicatorLightCords:
 		
-		
-		if wire_powered(terrain_group(cord,wireLayer1,1),wireLayer1) or wire_powered(terrain_group(cord,wireLayer2,1),wireLayer2):
-			update_cell_atlas(cord,1,2,indicatorLightAtlas[1])
-		else:
-			update_cell_atlas(cord,1,2,indicatorLightAtlas[0])
+		if get_cell_atlas_coords(1,cord) in indicatorLightAtlas:
+			if wire_powered(terrain_group(cord,wireLayer1,1),wireLayer1) or wire_powered(terrain_group(cord,wireLayer2,1),wireLayer2):
+				update_cell_atlas(cord,1,2,indicatorLightAtlas[1])
+			else:
+				update_cell_atlas(cord,1,2,indicatorLightAtlas[0])
+		elif get_cell_atlas_coords(1,cord) in bigIndicatorLightAtlas:
+			if wire_powered(terrain_group(cord,wireLayer1,1),wireLayer1) or wire_powered(terrain_group(cord,wireLayer2,1),wireLayer2):
+				update_cell_atlas(cord,1,2,bigIndicatorLightAtlas[1])
+			else:
+				update_cell_atlas(cord,1,2,bigIndicatorLightAtlas[0])
