@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://circuit_board_logic.gd" id="2_6gm6u"]
 
 [node name="CircuitBoard2D" type="TileMap"]
+texture_filter = 1
 scale = Vector2(2, 2)
 tile_set = ExtResource("1_gu7gc")
 format = 2
