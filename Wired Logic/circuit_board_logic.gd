@@ -29,6 +29,7 @@ var orGateAtlas = [Vector2i(12,0),Vector2i(14,0),Vector2i(12,2),Vector2i(14,2)]
 @onready var orGateCords = cells_in_atlas(orGateAtlas,1)
 
 
+
 func _ready():
 	componentUpdate()
 	wireIndex[1] = 2
